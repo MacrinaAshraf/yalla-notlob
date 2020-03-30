@@ -10,13 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_30_205515) do
+ActiveRecord::Schema.define(version: 2020_03_30_220548) do
+
+  create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "users_id"
+    t.integer "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["users_id"], name: "index_friends_on_users_id"
+  end
+
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
+  end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "order_time", null: false
     t.string "restaurant", null: false
     t.string "menu_path", null: false
     t.integer "status", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -34,5 +52,18 @@ ActiveRecord::Schema.define(version: 2020_03_30_205515) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "users_id"
+    t.bigint "groups_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["groups_id"], name: "index_users_groups_on_groups_id"
+    t.index ["users_id"], name: "index_users_groups_on_users_id"
+  end
+
+  add_foreign_key "friends", "users", column: "users_id"
+  add_foreign_key "groups", "users", on_delete: :cascade
   add_foreign_key "orders", "users", on_delete: :cascade
+  add_foreign_key "users_groups", "groups", column: "groups_id"
+  add_foreign_key "users_groups", "users", column: "users_id"
 end

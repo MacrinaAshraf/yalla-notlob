@@ -5,6 +5,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.string :restaurant, null: false
       t.string :menu_path, null: false
       t.integer :status, null: false
+      t.timestamps
     end
   end
 end
