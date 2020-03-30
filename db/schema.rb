@@ -53,17 +53,17 @@ ActiveRecord::Schema.define(version: 2020_03_30_220548) do
   end
 
   create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "groups_id"
+    t.bigint "user_id"
+    t.bigint "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["groups_id"], name: "index_users_groups_on_groups_id"
-    t.index ["users_id"], name: "index_users_groups_on_users_id"
+    t.index ["group_id"], name: "index_users_groups_on_group_id"
+    t.index ["user_id"], name: "index_users_groups_on_user_id"
   end
 
   add_foreign_key "friends", "users", column: "users_id"
   add_foreign_key "groups", "users", on_delete: :cascade
   add_foreign_key "orders", "users", on_delete: :cascade
-  add_foreign_key "users_groups", "groups", column: "groups_id"
-  add_foreign_key "users_groups", "users", column: "users_id"
+  add_foreign_key "users_groups", "groups"
+  add_foreign_key "users_groups", "users"
 end
