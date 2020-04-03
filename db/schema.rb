@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_095417) do
+ActiveRecord::Schema.define(version: 2020_04_03_195448) do
 
-  create_table "OrderItemPerUser", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "OrderItemPerUser", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "order_id", null: false
     t.string "item", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_095417) do
     t.index ["user_id"], name: "fk_rails_52883c4156"
   end
 
-  create_table "UserInvolvedToOrder", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "UserInvolvedToOrder", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "order_id", null: false
     t.integer "joined", null: false
