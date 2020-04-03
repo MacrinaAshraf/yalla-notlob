@@ -13,7 +13,7 @@ default: &default
 development:
   <<: *default
   encoding: utf8
-  database: yala_notlob
+  database: talabat
   username: root
   password: 
 
