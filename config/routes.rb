@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :users
+  resources :groups
   resources :friends
   resources :orders
   devise_for :users
