@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_095417) do
+ActiveRecord::Schema.define(version: 2020_04_03_210045) do
 
-  create_table "OrderItemPerUser", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "OrderItemPerUser", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "order_id", null: false
     t.string "item", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_095417) do
     t.index ["user_id"], name: "fk_rails_52883c4156"
   end
 
-  create_table "UserInvolvedToOrder", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "UserInvolvedToOrder", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "order_id", null: false
     t.integer "joined", null: false
@@ -51,7 +51,16 @@ ActiveRecord::Schema.define(version: 2020_04_02_095417) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "order_time", null: false
     t.string "restaurant", null: false
     t.string "menu_path", null: false
@@ -62,7 +71,7 @@ ActiveRecord::Schema.define(version: 2020_04_02_095417) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -75,22 +84,13 @@ ActiveRecord::Schema.define(version: 2020_04_02_095417) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "users_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "group_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["group_id"], name: "index_users_groups_on_group_id"
-    t.index ["user_id"], name: "index_users_groups_on_user_id"
-  end
-
   add_foreign_key "OrderItemPerUser", "orders", on_delete: :cascade
   add_foreign_key "OrderItemPerUser", "users", on_delete: :cascade
   add_foreign_key "UserInvolvedToOrder", "orders", on_delete: :cascade
   add_foreign_key "UserInvolvedToOrder", "users", on_delete: :cascade
   add_foreign_key "friends", "users", column: "users_id"
   add_foreign_key "groups", "users", on_delete: :cascade
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
   add_foreign_key "orders", "users", on_delete: :cascade
-  add_foreign_key "users_groups", "groups"
-  add_foreign_key "users_groups", "users"
 end
