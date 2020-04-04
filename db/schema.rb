@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_210045) do
     t.index ["user_id"], name: "fk_rails_b4f7e41506"
   end
 
-  create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "users_id"
     t.integer "friend_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_210045) do
     t.index ["users_id"], name: "index_friends_on_users_id"
   end
 
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
