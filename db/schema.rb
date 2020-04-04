@@ -28,20 +28,16 @@ ActiveRecord::Schema.define(version: 2020_04_03_202457) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
-  create_table "order_items_per_user", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "order_id", null: false
-    t.string "item", null: false
-    t.integer "price", null: false
-    t.integer "amount", null: false
-    t.string "comment", null: false
+  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "fk_rails_249d841623"
-    t.index ["user_id"], name: "fk_rails_52883c4156"
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "order_time", null: false
     t.string "restaurant", null: false
     t.string "menu_path", null: false
