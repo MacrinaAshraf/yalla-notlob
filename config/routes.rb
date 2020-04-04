@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   #resources :users
+  
+  root to: 'friends#index'
   resources :groups
   resources :friends
   resources :orders
