@@ -13,9 +13,9 @@ default: &default
 development:
   <<: *default
   encoding: utf8
-  database: talabat
+  database: yala_notlob
   username: root
-  password: 
+  password: root
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
