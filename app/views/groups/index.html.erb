@@ -1,12 +1,29 @@
-<p id="notice"><%= notice %></p>
-<%= form_for(@group, action_name:@group) do |f| %>
-  <div class="form-group">
-    <%= f.label :Group %>:
-    <%= f.text_field( :group, placeholder: "Enter your name of group") %>
+<div class="container">
+
+  <p id="notice"><%= notice %></p>
+  <h1>Groups</h1>
+  <%= form_for(@group, action_name:@group) do |f| %>
+    <div class="form-group">
+      <%= f.label :Groups %>
+      <%= f.text_field :name , placeholder: "Enter name of group" %>
+      <%= submit_tag "Add group", class:"btn btn-primary" %>
+    </div>
+  <% end %>
+  <div class="groupInfo">
+    <div class="showGroups">
+     <p>My Groups</p>
+      <% @groups.each do |group| %>
+        <div class="content"> 
+        <%= link_to group.name , group , method: :index %>
+        <div class="links">
+          <a href="<%= group_path(group) %>"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+          <%= link_to 'x', group , method: :delete , class:"glyphicon glyphicon-remove" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= submit_tag("Add group") %>
-  </div>
-<% end %>
+</div>
+
 
 
