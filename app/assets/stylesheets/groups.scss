@@ -1,3 +1,35 @@
 // Place all the styles related to the Groups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "bootstrap";
+@import "font-awesome";
+.groupInfo{
+    display: flex;
+    margin-top: 3%;
+}
+.showGroups{
+    width:20%;
+    flex: .25;
+    height:15%;
+    border:1px solid black ;
+    padding:3%;
+    padding-top:1% ;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+}
+.userInfo{
+    // width:15em;
+    // height:30%;
+    // border:1px solid black ;
+    padding-left:3%;
+    margin-left:10%;
+}
+.links{
+    margin-left: 30%;
+    padding-bottom: 3%;
+}
+h1{
+    margin-bottom: 5%;
+}
