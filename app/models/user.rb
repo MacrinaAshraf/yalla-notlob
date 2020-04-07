@@ -10,9 +10,9 @@ class User < ApplicationRecord
   has_many :invited_users
   has_many :orders, through: :invited_users
 
-  has_and_belongs_to_many :users, class_name: 'Friend', foreign_key: 'users_id'
+  has_many :users, class_name: 'Friend', foreign_key: 'friend_id'
 
-  has_and_belongs_to_many :friends, class_name: 'Friend', foreign_key: 'friend_id'
+  has_many :friends, class_name: 'Friend', foreign_key: 'user_id'
 
   has_and_belongs_to_many :groups
 
