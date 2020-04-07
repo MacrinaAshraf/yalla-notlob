@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.1'
+ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
@@ -54,3 +54,6 @@ gem 'devise'
 gem 'mysql2', '~> 0.5.3'
 gem 'bootstrap', '~> 4.4.1'
 gem "ipinfo-rails"
+gem 'uglifier'
+gem 'coffee-rails'
+gem 'mailcatcher'
