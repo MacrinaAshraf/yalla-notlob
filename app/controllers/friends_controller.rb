@@ -1,5 +1,6 @@
 class FriendsController < ApplicationController
-  before_action :set_friend, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_user!
+  # before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
   def index
     @friendnumber = current_user.friends
