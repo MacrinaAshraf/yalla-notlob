@@ -1,7 +1,16 @@
+
 <p id="notice"><%= notice %></p>
-
-<h1>your friends ya <%= @cc%></h1>
-
+<h1>New Friend</h1>
+<div class="container">
+  <h1 class="title">My Friends</h1>
+  <%= form_with(url:"/friends", method: "post") do %>
+    <%= text_field_tag(:email, nil, placeholder: "Friend Email...", class: "form-control") %>
+    <br />
+    <%= submit_tag "Add Friend", class: "btn btn-outline-info " %>
+  <% end %> 
+  <%= link_to 'Back', friends_path %>
+  
+  <h1>Friends</h1>
 <table>
   <thead>
     <tr>
@@ -10,17 +19,20 @@
   </thead>
 
   <tbody>
+
     <% @friends.each do |friend| %>
-      <tr>
-        <td><%= link_to 'Show', friend %></td>
-        <td><%= link_to 'Edit', edit_friend_path(friend) %></td>
-        <td><%= link_to 'Destroy', friend, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+      </div>
+          <div class="col-md-7">
+              <span class="col-md-12"> <%= friend.name %> </span>
+              <%= link_to 'unfriend', friend_path(friend),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+          </div>
+      </div>
+      <% end %>
+       
   </tbody>
 </table>
-
-<br>
 
 <%= link_to 'New Friend', new_friend_path %>
 <br/>

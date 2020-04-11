@@ -1,4 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>
+<div class="userInfo">
+  <h3><%= @group.name %></h3>
+  <div class="form">
+  <%= form_tag group_path, method: "get" do %>
+    <%= label_tag :name , "your friend email" %>
+    <%= search_field_tag :search , params[:search] %>
+    <%= submit_tag "Add" , :class=>"btn btn-primary" %>
+  <% end %>
+  <div>
+</div>
+<% @users.each do |user| %>  
+    <div>
+      <%= user.email %>
+    </div>
+<% end %>
