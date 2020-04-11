@@ -11,9 +11,7 @@ Rails.application.routes.draw do
     get '/users/sign_up' => 'devise/registrations#new'
     get '/users/sign_in' => 'devise/sessions#create'
 
-    match "*path", to: "pages#errorPage", via: :all
-
-    
+    # match "*path", to: "pages#errorPage", via: :all
     resources :friends
     resources :groups
     resources :orders
