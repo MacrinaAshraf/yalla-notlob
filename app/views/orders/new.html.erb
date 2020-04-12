@@ -1,5 +1,46 @@
 <h1>New Order</h1>
-
-<%= render 'form', order: @order %>
-
 <%= link_to 'Back', orders_path %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+        <%= form_for(@order, url: @order) do |f| %>
+        <div class="form-group">
+        <%= f.select(:order_time, ['Lunch', 'Breakfast'], {}, :class => 'form-control col-md-6')%>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_field(:restaurant, class: 'form-control col-md-6', placeholder: 'Restaurant')%><br>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_field(:user_id, class: 'form-control col-md-6', placeholder: 'Freind')%><br>
+        </div>
+
+        <div class="form-group">
+          
+            <%= f.file_field :menu_path, class: 'form-control col-md-6 ' %>
+          
+        </div>
+
+          <%= submit_tag 'Publish', class: "btn btn-info col-md-6"  %>
+        <% end %>
+
+    </div>
+    <div class="col-md-5">
+          <fieldset style="width:inherit;height:inherit;padding:0 10px;border-bottom:none; border:2px solid #000;" class="border p-2">
+          <legend style="color:black;font-weight:bold;" class="w-auto">Freinds Invited</legend>
+            <div class="card" style="width: 10rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <a href="#"><span aria-hidden="true">&times;</span></a>
+              </div>
+            </div>
+            
+          </fieldset>
+    </div>
+  </div>
+
+ 
+</div>

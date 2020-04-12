@@ -4,9 +4,9 @@ class OrdersController < ApplicationController
 
   # GET /orders
   # GET /orders.json
-  # def index
-  #   @orders = Order.all
-  # end
+  def index
+    @orders = Order.all
+  end
 
   # GET /orders/1
   # GET /orders/1.json
@@ -14,9 +14,9 @@ class OrdersController < ApplicationController
   # end
 
   # GET /orders/new
-  # def new
-  #   @order = Order.new
-  # end
+  def new
+    @order = Order.new
+  end
 
   # GET /orders/1/edit
   # def edit
@@ -26,18 +26,27 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-    
+    @order.status = "waiting"
+    @order.menu_path = params[:order][:menu_path].original_filename
+    uploaded_io = params[:order][:menu_path]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    @order.save()
+    redirect_to action: :index
 
-  #   respond_to do |format|
-  #     if @order.save
-  #       format.html { redirect_to @order, notice: 'Order was successfully created.' }
-  #       format.json { render :show, status: :created, location: @order }
-  #     else
-  #       format.html { render :new }
-  #       format.json { render json: @order.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+    # respond_to do |format|
+    #   if @order.save
+    #     puts(@order)
+    #     format.html { redirect_to @order, notice: 'Order was successfully created.' }
+    #     format.json { render :show, status: :created, location: @order }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
+
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
@@ -64,13 +73,13 @@ class OrdersController < ApplicationController
   # end
 
   # private
-    # Use callbacks to share common setup or constraints between actions.
-    # def set_order
-    #   @order = Order.find(params[:id])
-    # end
+  #   Use callbacks to share common setup or constraints between actions.
+  #   def set_order
+  #     @order = Order.find(params[:id])
+  #   end
 
-    # Only allow a list of trusted parameters through.
-#     def order_params
-#       params.fetch(:order, {})
-#     end
+  #   Only allow a list of trusted parameters through.
+    def order_params
+       params.require(:order).permit(:order_time, :restaurant, :menu_path, :user_id)
+    end
  end
