@@ -10,25 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_04_12_131208) do
+=======
+ActiveRecord::Schema.define(version: 2020_04_07_003010) do
+>>>>>>> 47ded1c2588a8f756b25085344c499708297897e
 
-  create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "users_id"
-    t.integer "friend_id", null: false
+  create_table "friends_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_friends_on_users_id"
+    t.index ["user_id"], name: "index_friends_users_on_user_id"
   end
 
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
+    t.integer "user_id"
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
-  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "group_id"
     t.datetime "created_at", precision: 6, null: false
@@ -37,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_04_12_131208) do
     t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
 
-  create_table "order_items_per_user", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "order_items_per_user", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "order_id", null: false
     t.string "item", null: false
@@ -46,33 +50,37 @@ ActiveRecord::Schema.define(version: 2020_04_12_131208) do
     t.string "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "fk_rails_249d841623"
-    t.index ["user_id"], name: "fk_rails_52883c4156"
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "order_time", null: false
     t.string "restaurant", null: false
     t.string "menu_path", null: false
     t.string "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+<<<<<<< HEAD
     t.bigint "user_id"
     t.string "meal"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "user_involved_to_order", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+=======
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "user_involved_to_order", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+>>>>>>> 47ded1c2588a8f756b25085344c499708297897e
     t.bigint "user_id", null: false
     t.bigint "order_id", null: false
     t.integer "joined", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id"], name: "fk_rails_96370dcb10"
-    t.index ["user_id"], name: "fk_rails_b4f7e41506"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -85,7 +93,8 @@ ActiveRecord::Schema.define(version: 2020_04_12_131208) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "friends", "users", column: "users_id"
+  add_foreign_key "friends_users", "users"
+  add_foreign_key "friends_users", "users", column: "friend_id"
   add_foreign_key "groups", "users", on_delete: :cascade
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"

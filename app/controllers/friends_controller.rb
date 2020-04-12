@@ -1,44 +1,54 @@
 class FriendsController < ApplicationController
-  before_action :set_friend, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  # before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
-  # GET /friends
-  # GET /friends.json
   def index
-    @friends = Friend.all
+    @friendnumber = current_user.friends
+    @friends= []
+    @friendnumber.each do |fri|
+    users =User.find(fri.friend_id)
+    @friends.push(users)
+       
+    end
+     
   end
-
-  # GET /friends/1
-  # GET /friends/1.json
-  def show
-  end
-
-  # GET /friends/new
+  
   def new
     @friend = Friend.new
+     
   end
 
-  # GET /friends/1/edit
-  def edit
-  end
-
-  # POST /friends
-  # POST /friends.json
   def create
-    @friend = Friend.new(friend_params)
-
-    respond_to do |format|
-      if @friend.save
-        format.html { redirect_to @friend, notice: 'Friend was successfully created.' }
-        format.json { render :show, status: :created, location: @friend }
-      else
-        format.html { render :new }
-        format.json { render json: @friend.errors, status: :unprocessable_entity }
-      end
+    user = User.find_by email: params[:email]
+   
+    if(user.present?)
+          @friend=Friend.find_by( user_id: current_user.id ,friend_id: user.id)
+          if(!@friend.present?)
+              @new_friend=Friend.create( user_id: current_user.id ,friend_id: user.id)
+            respond_to do |format|
+              if @new_friend.save
+                
+                format.html { redirect_to friends_url, notice: 'Friend was successfully created.' }
+                
+              else
+                format.html { render :new }
+                format.json { render json: @new_friend.errors, status: :unprocessable_entity }
+              end
+            
+            end
+          else
+            flash[:notice]="Already Friend"
+            redirect_back(fallback_location: root_path)
+          end
+    else 
+      flash[:notice]="user not found"
+      redirect_back(fallback_location: root_path)
+    
     end
-  end
 
-  # PATCH/PUT /friends/1
-  # PATCH/PUT /friends/1.json
+  end
+  
+
   def update
     respond_to do |format|
       if @friend.update(friend_params)
@@ -50,11 +60,12 @@ class FriendsController < ApplicationController
       end
     end
   end
-
-  # DELETE /friends/1
-  # DELETE /friends/1.json
+ 
   def destroy
-    @friend.destroy
+   @friend = current_user.friends.find_by(friend_id: params[:id])
+    @friend.destroy 
+  
+
     respond_to do |format|
       format.html { redirect_to friends_url, notice: 'Friend was successfully destroyed.' }
       format.json { head :no_content }
@@ -62,12 +73,11 @@ class FriendsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+   
     def set_friend
-      @friend = Friend.find(params[:id])
+      @friend = current_user.friends.find_by(friend_id: params[:id])
     end
-
-    # Only allow a list of trusted parameters through.
+  
     def friend_params
       params.fetch(:friend, {})
     end
