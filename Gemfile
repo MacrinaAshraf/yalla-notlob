@@ -52,8 +52,10 @@ end
 
 gem 'devise'
 gem 'mysql2', '~> 0.5.3'
+
 gem 'bootstrap', '~> 4.4.1'
 gem "ipinfo-rails"
+gem "font-awesome-rails"
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'mailcatcher'

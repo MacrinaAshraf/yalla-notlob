@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
- 
+    before_action :authenticate_user! 
+
     def index
         if user_signed_in?
             @currentUser = current_user.name
@@ -9,5 +10,8 @@ class PagesController < ApplicationController
             redirect_to new_user_session_path
         end
 
+    end
+    def errorPage
+    
     end
 end
