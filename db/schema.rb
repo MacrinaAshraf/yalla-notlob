@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_210045) do
+ActiveRecord::Schema.define(version: 2020_04_12_131208) do
 
   create_table "friends", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "users_id"
@@ -54,21 +54,12 @@ ActiveRecord::Schema.define(version: 2020_04_03_210045) do
     t.integer "order_time", null: false
     t.string "restaurant", null: false
     t.string "menu_path", null: false
-    t.integer "status", null: false
+    t.string "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
+    t.string "meal"
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "orders_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "order_id", null: false
-    t.integer "joined", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["order_id", "user_id"], name: "index_orders_users_on_order_id_and_user_id"
-    t.index ["user_id", "order_id"], name: "index_orders_users_on_user_id_and_order_id"
   end
 
   create_table "user_involved_to_order", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|

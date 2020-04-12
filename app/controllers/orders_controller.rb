@@ -11,7 +11,13 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
   end
-
+  def change_status
+    @order = Order.new
+    @order.status = "ready"
+    @order.save
+    redirect_to 
+  end  
+    
   # GET /orders/new
   def new
     @order = Order.new
@@ -54,6 +60,7 @@ class OrdersController < ApplicationController
   # DELETE /orders/1
   # DELETE /orders/1.json
   def destroy
+    @order = Order.find(params[:id])
     @order.destroy
     respond_to do |format|
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
