@@ -17,15 +17,15 @@ module YalaNotlob
     # the framework and any gems in your application.
 
 
-    ActionMailer::Base.smtp_settings = {
-      :address              => "smtp.gmail.com",
-      :domain               => "mail.google.com",
-      :port                 => 587,
-      :user_name            => "railsprojectteam@gmail.com",
-      :password             => 'Salma1234',
-      :authentication       => "login",
-      :enable_starttls_auto => true
-    }
+    # ActionMailer::Base.smtp_settings = {
+    #   :address              => "smtp.gmail.com",
+    #   :domain               => "mail.google.com",
+    #   :port                 => 587,
+    #   :user_name            => "railsprojectteam@gmail.com",
+    #   :password             => 'Salma1234',
+    #   :authentication       => "login",
+    #   :enable_starttls_auto => true
+    # }
 
 
   end

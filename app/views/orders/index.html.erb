@@ -1,20 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<center><h1>Orders</h1></center>
 
-<table>
+<center><table  border="1" cellspacing="0" cellpadding="10" id="c"></center>
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th >Order</th>
+      <th >Resturant</th>
+      <th >Invited</th>
+      <th >Joined</th>
+      <th >Status</th>
+      <th >Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= order.meal%></td>
+        <td><%= order.restaurant %></td>
+        <td>1</td>
+        <td>1</td>
+        <td><%= order.status %></td>
+        <td><%= link_to 'finish',status_path(order),class: 'btn btn-success' %><a href="<%=  %>" class="btn btn-primary">view</a><%= link_to 'cancel',order, method: :delete,class: 'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>

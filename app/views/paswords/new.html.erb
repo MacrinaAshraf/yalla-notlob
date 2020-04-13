@@ -18,11 +18,14 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
         <div class="login100-form validate-form p-l-55 p-r-55 p-t-178">
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <span class="login100-form-title">
-              Sign In
+
+
+            <%= form_for(:user, url: '/updatepassword', action: 'create') do |f| %>  
+
+              <span class="login100-form-title">
+              Edit Password
               <br/>
-                <% if notice %>
+              <% if notice %>
                   <%# <p style="color:green"><%= notice %>
                 <% end %>
                 <% if alert %>
@@ -30,38 +33,27 @@
                 <% end %>
             </span>
 
-    
+
             <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email">
-              <%= f.email_field :email, autofocus: true, autocomplete: 'email',class: 'input100',placeholder: 'email' %>
+              <%= f.email_field :email,class: "input100", autocomplete: "email",placeholder: 'email' %>
               <span class="focus-input100"></span>
             </div>
 
-            <div class="wrap-input100 validate-input" data-validate = "Please enter password">
-              <%= f.password_field :password, autocomplete: "current-password",class: 'input100',placeholder: 'password' %>
+    
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter new password">
+              <%= f.password_field :new_password,class: "input100", autocomplete: "new-password",placeholder: 'confirm password',minlength:6 %>
               <span class="focus-input100"></span>
             </div>
-
-            <div class="text-right p-t-13 p-b-23">
-              <span class="txt1">
-                Forgot
-              </span>
-              <%= link_to('Password?', updatepassword_path	,class: "txt2" ) %>  </li>      
-
-            </div>
+              
             
-
+     
             <div class="container-login100-form-btn">
-                  <%= f.submit "Log in",class:"login100-form-btn" %>
+                  <%= f.submit "Edit",class:"login100-form-btn" %>
             </div>
 
             <div class="flex-col-c p-t-170 p-b-40">
-              <span class="txt1 p-b-9">
-                Don’t have an account?
-              </span>
-
               
-            <%= link_to('Sign up now', new_user_registration_path	,class: "txt3" ) %>  </li>      
-            
+              
             </div>
             <%end %>	
           </div>
@@ -74,6 +66,8 @@
 </html>
 
 
+  
  
 
-<%# <%= render "devise/shared/links" %> 
+
+<%# <%= render "devise/shared/links" %>
