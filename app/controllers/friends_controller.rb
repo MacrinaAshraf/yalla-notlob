@@ -1,39 +1,35 @@
 class FriendsController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :set_friend, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
   def index
-    @friendnumber = current_user.friends
-    @friends= []
-    @friendnumber.each do |fri|
-      users =User.find(fri.friend_id)
+    @friend_number = current_user.friends
+    @friends = []
+    @friend_number.each do |fri|
+      users = User.find(fri.friend_id)
       @friends.push(users)
-
     end
 
   end
 
   def new
     @friend = Friend.new
-
   end
 
-  
   def create
     user = User.find_by email: params[:email]
 
     if user.present?
       @friend = Friend.find_by(user_id: current_user.id, friend_id: user.id)
       if !@friend.present?
-        @new_friend = Friend.create( user_id: current_user.id, friend_id: user.id)
+        @new_friend = Friend.create(user_id: current_user.id, friend_id: user.id)
         respond_to do |format|
           if @new_friend.save
-            format.html { redirect_to friends_url, notice: 'Friend was successfully created.' }
+            format.html { redirect_to friends_url, notice: 'Friend was successfully created.'}
           else
             format.html { render :new }
             format.json { render json: @new_friend.errors, status: :unprocessable_entity }
           end
-
         end
       else
         flash[:notice] = 'Already Friend'
