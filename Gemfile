@@ -59,3 +59,5 @@ gem "font-awesome-rails"
 gem 'uglifier'
 gem 'coffee-rails'
 gem 'mailcatcher'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'

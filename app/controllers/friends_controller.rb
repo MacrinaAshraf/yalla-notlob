@@ -1,5 +1,5 @@
 class FriendsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   # before_action :set_friend, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -18,6 +18,7 @@ class FriendsController < ApplicationController
 
   end
 
+  
   def create
     user = User.find_by email: params[:email]
 
