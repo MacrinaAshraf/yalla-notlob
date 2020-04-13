@@ -1,0 +1,19 @@
+  <div class="form-group">
+          Groups:
+           <select name="order[user_id]" class='form-control col-md-6'>
+              <% Group.all.each do |group| %>
+                  <option value="<%= group.id %>"><%= group.user_id%></option>
+              <% end %>
+            </select>
+                  <span aria-hidden="true"><a href="" style="margin-left:50px;">Add Gruop</a></span>
+        </div>
+
+         <div class="form-group">
+         Freinds:
+           <select name="order[user_id]" class='form-control col-md-6'>
+              <% Friend.all.each do |friend| %>
+                  <option value="<%= friend.id %>"><%= friend.friend_id%></option>
+              <% end %>
+            </select>
+                  <span aria-hidden="true"><a href="" style="margin-left:50px;">Add Friend</a></span>
+        </div>

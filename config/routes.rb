@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
     get '/users/sign_up' => 'devise/registrations#new'
     get '/users/sign_in' => 'devise/sessions#create'
+    get '/friends' => 'friends#index', as: 'friends'
 
     # match "*path", to: "pages#errorPage", via: :all
     resources :friends

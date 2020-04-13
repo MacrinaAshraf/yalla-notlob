@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   # before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -25,7 +25,10 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @friends = Friend.new
   end
+
+  
 
   # GET /orders/1/edit
   # def edit
@@ -36,6 +39,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.status = "waiting"
+    #Current User Id
+    @order.user_id = 1
     @order.menu_path = params[:order][:menu_path].original_filename
     uploaded_io = params[:order][:menu_path]
     File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
@@ -97,6 +102,12 @@ class OrdersController < ApplicationController
 
   #   Only allow a list of trusted parameters through.
     def order_params
-       params.require(:order).permit(:order_time, :restaurant, :menu_path, :user_id)
+       params.require(:order).permit(:order_time, :restaurant, :menu_path)
     end
  end
+
+
+
+ def freind_params
+  params.require(:friend).permit(:friend_id)
+end
