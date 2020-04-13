@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def current_user
-    @current_user = User.find_by(email).where(user_id:current_user.id)
+    @current_user = User.find_by(email).where(user_id: current_user.id)
   end
 
   def index
@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @current_user = params[:search]
-    @users = User.all.where("lower(email) LIKE :search", search: @current_user)
+    @users = User.all.where('lower(email) LIKE :search', search: @current_user)
     return @group , @group.users.create()
   end
 
@@ -64,13 +64,14 @@ class GroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def group_params
-      params.require(:group).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def group_params
+    params.require(:group).permit(:name)
+  end
 end

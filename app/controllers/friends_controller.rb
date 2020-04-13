@@ -6,48 +6,43 @@ class FriendsController < ApplicationController
     @friendnumber = current_user.friends
     @friends= []
     @friendnumber.each do |fri|
-    users =User.find(fri.friend_id)
-    @friends.push(users)
-       
+      users =User.find(fri.friend_id)
+      @friends.push(users)
+
     end
-     
+
   end
-  
+
   def new
     @friend = Friend.new
-     
+
   end
 
   def create
     user = User.find_by email: params[:email]
-   
-    if(user.present?)
-          @friend=Friend.find_by( user_id: current_user.id ,friend_id: user.id)
-          if(!@friend.present?)
-              @new_friend=Friend.create( user_id: current_user.id ,friend_id: user.id)
-            respond_to do |format|
-              if @new_friend.save
-                
-                format.html { redirect_to friends_url, notice: 'Friend was successfully created.' }
-                
-              else
-                format.html { render :new }
-                format.json { render json: @new_friend.errors, status: :unprocessable_entity }
-              end
-            
-            end
-          else
-            flash[:notice]="Already Friend"
-            redirect_back(fallback_location: root_path)
-          end
-    else 
-      flash[:notice]="user not found"
-      redirect_back(fallback_location: root_path)
-    
-    end
 
+    if user.present?
+      @friend = Friend.find_by(user_id: current_user.id, friend_id: user.id)
+      if !@friend.present?
+        @new_friend = Friend.create( user_id: current_user.id, friend_id: user.id)
+        respond_to do |format|
+          if @new_friend.save
+            format.html { redirect_to friends_url, notice: 'Friend was successfully created.' }
+          else
+            format.html { render :new }
+            format.json { render json: @new_friend.errors, status: :unprocessable_entity }
+          end
+
+        end
+      else
+        flash[:notice] = 'Already Friend'
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      flash[:notice] = 'user not found'
+      redirect_back(fallback_location: root_path)
+    end
   end
-  
 
   def update
     respond_to do |format|
@@ -60,11 +55,11 @@ class FriendsController < ApplicationController
       end
     end
   end
- 
+
   def destroy
-   @friend = current_user.friends.find_by(friend_id: params[:id])
-    @friend.destroy 
-  
+    @friend = current_user.friends.find_by(friend_id: params[:id])
+    @friend.destroy
+
 
     respond_to do |format|
       format.html { redirect_to friends_url, notice: 'Friend was successfully destroyed.' }
@@ -73,12 +68,12 @@ class FriendsController < ApplicationController
   end
 
   private
-   
-    def set_friend
-      @friend = current_user.friends.find_by(friend_id: params[:id])
-    end
-  
-    def friend_params
-      params.fetch(:friend, {})
-    end
+
+  def set_friend
+    @friend = current_user.friends.find_by(friend_id: params[:id])
+  end
+
+  def friend_params
+    params.fetch(:friend, {})
+  end
 end
