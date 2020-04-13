@@ -102,8 +102,12 @@ class OrdersController < ApplicationController
   #   end
 
     # Only allow a list of trusted parameters through.
+    # def order_params
+    #   params.fetch(:order, {})
+    # end
+
     def order_params
-      params.fetch(:order, {})
+      params.require(:order).permit(:order_time, :restaurant, :menu_path)
     end
  end
 

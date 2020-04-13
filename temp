@@ -17,3 +17,11 @@
             </select>
                   <span aria-hidden="true"><a href="" style="margin-left:50px;">Add Friend</a></span>
         </div>
+
+
+Freind Invite Form...
+
+         <%= form_for(Friend.new, url: @friend) do |s| %>
+            <%= s.text_field(:friend_id,id:"friend_added", class: 'form-control col-md-6', placeholder: 'Type Freind')%><br>
+            <span aria-hidden="true"><a href="" style="margin-left:50px;">Add To Order</a></span>
+          <% end %>

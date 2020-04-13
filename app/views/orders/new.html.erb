@@ -14,10 +14,7 @@
         </div>
 
         <div class="form-group">
-          <%= form_for(Friend.new, url: @friend) do |s| %>
-            <%= s.text_field(:friend_id,id:"friend_added", class: 'form-control col-md-6', placeholder: 'Type Freind')%><br>
-            <span aria-hidden="true"><a href="" style="margin-left:50px;">Add To Order</a></span>
-          <% end %>
+         <%# Freinds Invite Foes Here  %>
         </div>
 
            
@@ -31,6 +28,8 @@
         <% end %>
 
     </div>
+
+    <%#      Side Section       %>
     <div class="col-md-5" id="user">
           <fieldset style="width:inherit;height:inherit;padding:0 10px;border-bottom:none;border-radius:10px; border:2px solid #000;" class="border p-2">
           <legend style="color:black;font-weight:bold;" class="w-auto">Freinds Invited</legend>
