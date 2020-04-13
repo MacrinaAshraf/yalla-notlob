@@ -10,21 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_04_12_131208) do
-=======
-ActiveRecord::Schema.define(version: 2020_04_07_003010) do
->>>>>>> 47ded1c2588a8f756b25085344c499708297897e
 
-  create_table "friends_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "friend_id", null: false
+  create_table "friends_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_friends_users_on_user_id"
   end
 
-  create_table "groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "groups", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -32,18 +28,18 @@ ActiveRecord::Schema.define(version: 2020_04_07_003010) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
-  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "group_id"
+  create_table "groups_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_groups_users_on_group_id"
     t.index ["user_id"], name: "index_groups_users_on_user_id"
   end
 
-  create_table "order_items_per_user", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "order_id", null: false
+  create_table "order_items_per_user", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "order_id", null: false
     t.string "item", null: false
     t.integer "price", null: false
     t.integer "amount", null: false
@@ -52,35 +48,27 @@ ActiveRecord::Schema.define(version: 2020_04_07_003010) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.integer "order_time", null: false
     t.string "restaurant", null: false
     t.string "menu_path", null: false
     t.string "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-<<<<<<< HEAD
-    t.bigint "user_id"
+    t.integer "user_id"
     t.string "meal"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "user_involved_to_order", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-=======
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "user_involved_to_order", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
->>>>>>> 47ded1c2588a8f756b25085344c499708297897e
-    t.bigint "user_id", null: false
-    t.bigint "order_id", null: false
+  create_table "user_involved_to_order", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "order_id", null: false
     t.integer "joined", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
