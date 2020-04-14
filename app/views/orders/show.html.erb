@@ -4,58 +4,123 @@
 <br>
 <br>
 
-<%= link_to 'Back', orders_path , class: 'btn-group genric-btn info-border circle arrow ml-3'%>
+
+<%= link_to 'Back', orders_path, class: 'btn-group genric-btn info-border circle arrow ml-3' %>
 
 <br>
 <br>
-<table  class="table">
-  <thead>
-  <tr>
-    <th scope="col" >Person</th>
-    <th scope="col" >Item</th>
-    <th scope="col" >Amount</th>
-    <th scope="col" >Price</th>
-    <th scope="col" >Comment</th>
-    <th scope="col" >Actions</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @order.order_details.each do |detail| %>
+<% if @order.order_details.any? %>
+  <table class="table">
+    <thead>
     <tr>
-      <td ><%=detail_current_user(detail)%></td>
-      <td ><%= detail.item%></td>
-      <td ><%= detail.amount %></td>
-      <td ><%= detail.price%></td>
-      <td ><%= detail.comment%></td>
-      <td >
-        <div class="btn-toolbar">
-          <%= link_to :Cancel, [detail.order, detail], method: :delete, class: 'btn btn-outline-danger btn-group' %>
-        </div>
-      </td>
+      <th scope="col">Person</th>
+      <th scope="col">Item</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Price</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Actions</th>
     </tr>
-  <% end %>
-  </tbody>
-</table>
-
-<br>
-<br>
-<br>
-<br>
-<h3>Add a new item</h3>
-
-
-<%#= render partial: 'errors' %>
-
-<%= form_for([@order, @order.order_details.build], method: :post) do |f| %>
-  <div class="form-group ml-10">
-<!--    <input type="hidden" name="user_id" value="<%#= current_user.id %>"/>-->
-    <%= f.text_field(:item, placeholder: "What do you want?", class:"form-control col-md-6") %>
-    <%= f.number_field(:amount, placeholder: "How many?", class:"form-control col-md-6") %>
-    <%= f.number_field(:price, placeholder: "Fow much?", class:"form-control col-md-6") %>
-    <%= f.text_field(:comment, placeholder: "Any comments?", class:"form-control col-md-6") %>
-  </div>
-  <div class="form-group">
-    <%= submit_tag "Add", class: "btn btn-success" %>
+    </thead>
+    <tbody>
+    <% @order.order_details.each do |detail| %>
+      <tr>
+        <td><%= detail_current_user(detail) %></td>
+        <td><%= detail.item %></td>
+        <td><%= detail.amount %></td>
+        <td><%= detail.price %></td>
+        <td><%= detail.comment %></td>
+        <td>
+          <div class="btn-toolbar">
+            <% if item_belong_to_current_user(detail) %>
+              <%= link_to :Cancel, [detail.order, detail], method: :delete, class: 'btn btn-outline-danger btn-group' %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class="card">
+    <div class="card-header">
+      No Items Added To The Order Yet.
+    </div>
   </div>
 <% end %>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%#=render 'errors' %>
+      <%if user_is_invited?(@order) or @order.user_id == current_user.id %>
+        <h3>Add a new item</h3>
+        <%= form_for([@order, @order.order_details.build], method: :post) do |f| %>
+          <div class="form-group ml-10">
+            <%= f.text_field(:item, placeholder: "What do you want?", class: "form-control col-md-8") %>
+            <br>
+            <%= f.number_field(:amount, placeholder: "How many?", class: "form-control col-md-8") %>
+            <br>
+            <%= f.number_field(:price, placeholder: "How much?", class: "form-control col-md-8") %>
+            <br>
+            <%= f.text_field(:comment, placeholder: "Any comments?", class: "form-control col-md-8") %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag "Add", class: "btn btn-success" %>
+          </div>
+        <% end %>
+        <% else %>
+          <br>
+          <div class="card">
+            <div class="card-header">
+              You Are Not Invited To This Order
+            </div>
+          </div>
+        <% end %>
+    </div>
+
+    <div class="col">
+      <br>
+      <% if @order.invited_users.any? %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Person</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @order.invited_users.each do |user| %>
+            <tr>
+              <td><%= get_user_name(user) %></td>
+              <td>
+                <% if user.joined == 0 %>
+                  Invited
+                <% else %>
+                  Joined
+                <% end %>
+              </td>
+              <td>
+              <div class="btn-toolbar">
+                <% if order_belong_to_current_user(@order) %>
+                  <%#= link_to :Cancel, [detail.order, detail], method: :delete, class: 'btn btn-outline-danger btn-group' %>
+                  <button class="btn btn-outline-danger btn-group">Remove</button>
+                <% end %>
+              </div>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <div class="card  ">
+          <div class="card-header">
+            No Users Invited To The Order Yet.
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
