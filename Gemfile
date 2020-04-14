@@ -61,3 +61,4 @@ gem 'coffee-rails'
 gem 'mailcatcher'
 gem "jquery-rails"
 gem "jquery-ui-rails"
+gem "notifications"
