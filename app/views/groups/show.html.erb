@@ -16,9 +16,10 @@
          <div class="userInfo">
          <h3><%= @group.name %></h3>
          <div class="form">
-        <%= form_with(url: "group_users_path", method: "post") do %>
+        <%= form_with(url: "/group_users", method: "post") do %>
             <div class="form-group">
-                <%= text_field_tag :name ,nil, placeholder: "Enter email of friends..." %>
+                <%= hidden_field_tag :group_id, @group.id %>
+                <%= text_field_tag :email ,nil, placeholder: "Enter email of friends..." %>
                     <%= submit_tag "Add User", class:"btn btn-primary" %>
             </div>
         <% end %>
