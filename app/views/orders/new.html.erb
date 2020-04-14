@@ -11,7 +11,11 @@
     <div class="col-md-7">
       <%= form_for(@order, url: @order) do |f| %>
         <div class="form-group">
-          <%= f.select(:order_time, ['Lunch', 'Breakfast'], {}, :class => 'form-control col-md-6') %>
+<%= f.select :meal, [
+    ['Lunch','Lunch'],
+    ['Breakfast','Breakfast']
+  ], {}, prompt: 'Select One' %>
+
         </div>
 
         <div class="form-group">

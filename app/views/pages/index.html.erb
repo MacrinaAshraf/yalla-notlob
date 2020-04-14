@@ -94,10 +94,9 @@
         <div class="about_info_wrap">
           <h3>Last Orders</h3>
           <span class="long_dash"></span>
-          <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-            ab illo inventore veritatis et quasi. Exercitation photo booth stumptown tote bag todo Banksy, elit small
-            batch freegan sed. Craft beer elit seitan exercitation photo booth et 8-bit kale chips proident chillwave
-            deep vow laborum. Aliquip veniam delectus, marfa eiusmod pinterest.</p>
+          <% @orders.each do |order|%>
+          <p><%= order %></p>
+          <%end%>
           <ul class="food_list">
             <li>
               <img src="/assets/svg_icon/salad.svg" alt="">
