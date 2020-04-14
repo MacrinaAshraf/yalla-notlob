@@ -99,11 +99,9 @@
                 <% flash[:group_error] %>
             </div>
     <% end %>
-    <% if flash[:notice].present? %>
-    <div class ="alert alert-danger">
-        <% flash[:notice] %>
-    </div>
-    <% end %>
+    <div class="parent">
+    <h1>Add Group</h1>
+    <div class="formContent">
     <%= form_with(url: "/groups", method: "post") do %>
         <div class="form-group">
           <%= label_tag :Groups %>
