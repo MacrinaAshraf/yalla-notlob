@@ -21,18 +21,19 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
     @current_user = params[:search]
     @users = User.all.where("email LIKE :search", search: @current_user)
+
   end
 
   def destroy
+    @group = Group.find(params[:id])
     @group.destroy
-    respond_to do |format|
-      format.html { redirect_to groups_url, notice: 'Group was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:notice] = " Group successfully deleted"
+    redirect_to :groups
+  
   end
 
   private
-  
+
     def set_group
       @group = Group.find(params[:id])
     end
