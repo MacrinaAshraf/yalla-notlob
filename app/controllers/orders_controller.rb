@@ -131,16 +131,31 @@ def checkInvitedExistance
             if @userGroups.ids.include? group.id or group.user_id === current_user.id
               flag = 1
               result = true
-              respond_with(@users, :include => :status)
+              # respond_with(@users, :include => :status)
+              respond_to do |format|
+
+                format.html # show.html.erb
+                format.json { render json: @users, :include => :status }
+              end
             end
           end
           if flag == 0
-            @users = nil
-            respond_with(@users, :include => :status) 
+            @users = []
+            # respond_with(@users, :include => :status) 
+            respond_to do |format|
+
+              format.html # show.html.erb
+              format.json { render json: @users, :include => :status }
+            end
           end
         else
-          @users = nil
-          respond_with(@users, :include => :status)
+          @users = []
+          # respond_with(@users, :include => :status)
+          respond_to do |format|
+
+            format.html # show.html.erb
+            format.json { render json: @users, :include => :status }
+          end
         end
     end
 end
