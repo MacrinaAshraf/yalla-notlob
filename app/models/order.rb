@@ -4,6 +4,4 @@ class Order < ApplicationRecord
   has_many :invited_users
   has_many :users, through: :invited_users
   # enum status: [ :waiting, :finished ]
-  
-  
 end
