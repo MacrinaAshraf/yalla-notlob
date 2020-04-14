@@ -1,23 +1,162 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>YalaNotlob</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<!doctype html>
+<html class="no-js" lang="zxx">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <body>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Yala Notlob</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%# if notice %>
-      <%# <p class="alert alert-success">= notice</p> %>
-    <%# end %>
-    <%# if alert %>
-      <%# <p class="alert alert-danger">= alert</p> %>
-    <%# end %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
-    <%= yield %>
-  </body>
+  <!-- <link rel="manifest" href="site.webmanifest"> -->
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <!-- CSS here -->
+  <link rel="stylesheet" type="text/css" href="/assets/loginutil.css">
+  <link rel="stylesheet" type="text/css" href="/assets/loginmain.css">
+  <link rel="stylesheet" href="/assets/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="/assets/magnific-popup.css">
+  <link rel="stylesheet" href="/assets/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/themify-icons.css">
+  <link rel="stylesheet" href="/assets/gijgo.css">
+  <link rel="stylesheet" href="/assets/nice-select.css">
+  <link rel="stylesheet" href="/assets/flaticon.css">
+  <link rel="stylesheet" href="/assets/slicknav.css">
+
+  <link rel="stylesheet" href="/assets/style.css">
+  <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+  your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<% if user_signed_in? %>
+  <header>
+    <div class="header-area ">
+      <div id="sticky-header" class="main-header-area">
+        <div class="container-fluid p-0">
+          <div class="header_bottom_border">
+            <div class="row align-items-center no-gutters">
+              <div class="col-xl-3 col-lg-2">
+                <div class="logo">
+                  <a href="index.html">
+                    <img src="/assets/logo.png" alt="">
+                  </a>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-7">
+                <div class="main-menu  d-none d-lg-block">
+                  <nav>
+                    <ul id="navigation">
+                      <li><a class="active" href="index.html">home</a></li>
+                      <li><a href="Menu.html">Menu</a></li>
+                      <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                        <ul class="submenu">
+                          <li><a href="about.html">about</a></li>
+                          <li><a href="elements.html">elements</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                        <ul class="submenu">
+                          <li><a href="blog.html">blog</a></li>
+                          <li><a href="single-blog.html">single-blog</a></li>
+                        </ul>
+                      </li>
+                      <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+              <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                <div class="say_hello">
+                  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="mobile_menu d-block d-lg-none"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <% if content_for?(:slider) %>
+    <%= yield(:slider) %>
+  <% else %>
+    <div class="bradcam_area bradcam_bg_2">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="bradcam_text text-center">
+              <h3><%= yield :title %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <%= yield %>
+
+<% else %>
+
+  <%= yield :not_signed_in %>
+
+<% end %>
+
+<script src="/assets/vendor/modernizr-3.5.0.min.js"></script>
+<script src="/assets/vendor/jquery-1.12.4.min.js"></script>
+<script src="/assets/popper.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<script src="/assets/owl.carousel.min.js"></script>
+<script src="/assets/isotope.pkgd.min.js"></script>
+<script src="/assets/ajax-form.js"></script>
+<script src="/assets/waypoints.min.js"></script>
+<script src="/assets/jquery.counterup.min.js"></script>
+<script src="/assets/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/scrollIt.js"></script>
+<script src="/assets/jquery.scrollUp.min.js"></script>
+<script src="/assets/wow.min.js"></script>
+<script src="/assets/nice-select.min.js"></script>
+<script src="/assets/jquery.slicknav.min.js"></script>
+<script src="/assets/jquery.magnific-popup.min.js"></script>
+<script src="/assets/plugins.js"></script>
+<script src="/assets/gijgo.min.js"></script>
+
+<!--contact js-->
+<script src="/assets/contact.js"></script>
+<script src="/assets/jquery.ajaxchimp.min.js"></script>
+<script src="/assets/jquery.form.js"></script>
+<script src="/assets/jquery.validate.min.js"></script>
+<script src="/assets/mail-script.js"></script>
+
+<script src="js/main.js"></script>
+<script>
+    $('#datepicker').datepicker({
+        iconsLibrary: 'fontawesome',
+        icons: {
+            rightIcon: '<span class="fa fa-caret-down"></span>'
+        }
+    });
+    $('#datepicker2').datepicker({
+        iconsLibrary: 'fontawesome',
+        icons: {
+            rightIcon: '<span class="fa fa-caret-down"></span>'
+        }
+
+    });
+</script>
+</body>
 </html>

@@ -2,226 +2,205 @@
 <html class="no-js" lang="zxx">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Restaurant</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Yala Notlob</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.png">
-    <!-- Place favicon.ico in the root directory -->
+  <!-- <link rel="manifest" href="site.webmanifest"> -->
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.png">
+  <!-- Place favicon.ico in the root directory -->
 
-    <!-- CSS here -->
-    <link rel="stylesheet" href="/assets/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/magnific-popup.css">
-    <link rel="stylesheet" href="/assets/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/themify-icons.css">
-    <link rel="stylesheet" href="/assets/gijgo.css">
-    <link rel="stylesheet" href="/assets/nice-select.css">
-    <link rel="stylesheet" href="/assets/flaticon.css">
-    <link rel="stylesheet" href="/assets/slicknav.css">
+  <!-- CSS here -->
+  <link rel="stylesheet" href="/assets/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="/assets/magnific-popup.css">
+  <link rel="stylesheet" href="/assets/font-awesome.min.css">
+  <link rel="stylesheet" href="/assets/themify-icons.css">
+  <link rel="stylesheet" href="/assets/gijgo.css">
+  <link rel="stylesheet" href="/assets/nice-select.css">
+  <link rel="stylesheet" href="/assets/flaticon.css">
+  <link rel="stylesheet" href="/assets/slicknav.css">
 
-    <link rel="stylesheet" href="/assets/style.css">
-    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+  <link rel="stylesheet" href="/assets/style.css">
+  <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
 
 <body>
-    <!--[if lte IE 9]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
+<% content_for :slider do %>
 
-    <!-- header-start -->
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container-fluid p-0">
-                    <div class="header_bottom_border">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col-xl-3 col-lg-2">
-                                <div class="logo">
-                                    <a href="index.html">
-                                        <img src="/assets/logo.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-7">
-                                <div class="main-menu  d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
-                                            <li><a href="Menu.html">Menu</a></li>
-                                            <li><a href="#">pages</a>
-                                                <ul class="submenu">
-                                                    <li><a href="about.html">about</a></li>
-                                                    <li><a href="elements.html">elements</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete ) %>  </li>      
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                                <div class="say_hello">
-                                    <a href="#"><%= @currentUser %></a>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- header-end -->
-
-
-
-    <!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-9 col-md-9 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Fresh and Delicious Food
-                                    For your Health</h3>
-                                <a href="menu.html" class="boxed-btn3">View Menus</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-9 col-md-9 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Fresh and Delicious Food
-                                    For your Health</h3>
-                                <a href="menu.html" class="boxed-btn3">View Menus</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-9 col-md-9 col-md-12">
-                            <div class="slider_text text-center">
-                                <h3>Fresh and Delicious Food
-                                    For your Health</h3>
-                                <a href="menu.html" class="boxed-btn3">View Menus</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- slider_area_end -->
-
-    <!-- about_area_start -->
-    <div class="about_area">
-        <div class="icon_1 d-none d-md-block">
-            <img src="/assets/icon/1.png" alt="">
-        </div>
-        <div class="icon_2 d-none d-md-block">
-            <img src="/assets/icon/2.png" alt="">
-        </div>
-        <div class="icon_3 d-none d-md-block">
-            <img src="/assets/icon/3.png" alt="">
-        </div>
+  <div class="slider_area">
+    <div class="slider_active owl-carousel">
+      <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="about_info_wrap">
-                            <h3>Friends Activity</h3>
-                            <span class="long_dash"></span>
-                        <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi. Exercitation photo booth stumptown tote bag todo Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation photo booth et 8-bit kale chips proident chillwave deep vow laborum. Aliquip veniam delectus, marfa eiusmod pinterest.</p>
-                        <ul class="food_list">
-                            <li>
-                                <img src="/assets/svg_icon/salad.svg" alt="">
-                                <span>Fresh Ingredients</span>
-                            </li>
-                            <li>
-                                <img src="/assets/svg_icon/tray.svg" alt="">
-                                <span>Expert cooker</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about_img">
-                        <div class="img_1">
-                            <img src="/assets/about/big.png" alt="">
-                        </div>
-                        <div class="small_img">
-                            <img src="/assets/about/small.png" alt="">
-                        </div>
-                    </div>
-                </div>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-xl-9 col-md-9 col-md-12">
+              <div class="slider_text text-center">
+                <h3>Fresh and Delicious Food
+                  For your Health</h3>
+                <a href="menu.html" class="boxed-btn3">View Menus</a>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <!-- about_area_end -->
-
-    <!-- Delicious area start  -->
-    <div class="Delicious_area">
+      </div>
+      <div class="single_slider  d-flex align-items-center slider_bg_2 overlay">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="section_title text-center mb-50">
-                        <h3>Last Order</h3>
-                    </div>
+          <div class="row align-items-center justify-content-center">
+            <div class="col-xl-9 col-md-9 col-md-12">
+              <div class="slider_text text-center">
+                <h3>Fresh and Delicious Food
+                  For your Health</h3>
+                <a href="menu.html" class="boxed-btn3">View Menus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="single_slider  d-flex align-items-center slider_bg_1 overlay">
+        <div class="container">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-xl-9 col-md-9 col-md-12">
+              <div class="slider_text text-center">
+                <h3>Fresh and Delicious Food
+                  For your Health</h3>
+                <a href="menu.html" class="boxed-btn3">View Menus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- slider_area_end -->
+<% end %>
+
+<!-- about_area_start -->
+<div class="about_area">
+  <div class="icon_1 d-none d-md-block">
+    <img src="/assets/icon/1.png" alt="">
+  </div>
+  <div class="icon_2 d-none d-md-block">
+    <img src="/assets/icon/2.png" alt="">
+  </div>
+  <div class="icon_3 d-none d-md-block">
+    <img src="/assets/icon/3.png" alt="">
+  </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="about_info_wrap">
+          <h3>Friends Activity</h3>
+          <span class="long_dash"></span>
+          <p>Omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+            ab illo inventore veritatis et quasi. Exercitation photo booth stumptown tote bag todo Banksy, elit small
+            batch freegan sed. Craft beer elit seitan exercitation photo booth et 8-bit kale chips proident chillwave
+            deep vow laborum. Aliquip veniam delectus, marfa eiusmod pinterest.</p>
+          <ul class="food_list">
+            <li>
+              <img src="/assets/svg_icon/salad.svg" alt="">
+              <span>Fresh Ingredients</span>
+            </li>
+            <li>
+              <img src="/assets/svg_icon/tray.svg" alt="">
+              <span>Expert cooker</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="about_img">
+          <div class="img_1">
+            <img src="/assets/about/big.png" alt="">
+          </div>
+          <div class="small_img">
+            <img src="/assets/about/small.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- about_area_end -->
+
+<!-- Delicious area start  -->
+<div class="Delicious_area">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="section_title text-center mb-50">
+          <h3>Last Order</h3>
+        </div>
+      </div>
+    </div>
+    <div class="tablist_menu">
+      <div class="row">
+        <div class="col-xl-12">
+          <ul class="nav justify-content-center" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
+                <div class="single_menu text-center">
+                  <div class="icon">
+                  </div>
+                  <h4>Dinner</h4>
                 </div>
-            </div>
-            <div class="tablist_menu">
-                    <div class="row">
-                            <div class="col-xl-12">
-                                    <ul class="nav justify-content-center" id="pills-tab" role="tablist">
-                                            <li class="nav-item">
-                                              <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">
-                                                  <div class="single_menu text-center">
-                                                      <div class="icon">
-                                                                                                                </div>
-                                                        <h4>Dinner</h4>
-                                                  </div>
-                                              </a>
-                                            </li>
-                                            <li class="nav-item">
-                                              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
-                                                    <div class="single_menu text-center">
-                                                            <div class="icon">
-                                                            </div>
-                                                            <h4>Breakfast</h4>
-                                                        </div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
-                                                    <div class="single_menu text-center">
-                                                            <div class="icon">
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">
+                <div class="single_menu text-center">
+                  <div class="icon">
+                  </div>
+                  <h4>Breakfast</h4>
+                </div>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">
+                <div class="single_menu text-center">
+                  <div class="icon">
 
-                                                            </div>
-                                                            <h4>Lunch</h4>
-                                                        </div>
-                                                </a>
-                                            </li>
-                                    </ul>
-                            </div>
-                        </div>
+                  </div>
+                  <h4>Lunch</h4>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="row">
+          <div class="col-xl-6 col-md-6 col-lg-6">
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/1.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#12. Chicken Chilis</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/3.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#10. Fried Rice</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
             </div>
 
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
             <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                         <div class="row">
@@ -368,89 +347,100 @@
                     </div>
                 </div>
             </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                        <div class="row">
-                <div class="col-xl-6 col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="/assets/delicious/1.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>#12. Chicken Chilis</h3>
-                            <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
-                            <span>$20</span>
-                        </div>
-                    </div>
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="/assets/delicious/3.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>#10. Fried Rice</h3>
-                            <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
-                            <span>$20</span>
-                        </div>
-                    </div>
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="/assets/delicious/5.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>#02. Burger Cury</h3>
-                            <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
-                            <span>$20</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-6 col-lg-6">
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="/assets/delicious/2.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>#16. Chicken Chilis</h3>
-                            <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
-                            <span>$20</span>
-                        </div>
-                    </div>
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="/assets/delicious/4.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>#08. Vegetable fry</h3>
-                            <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
-                            <span>$20</span>
-                        </div>
-                    </div>
-                    <div class="single_delicious d-flex align-items-center">
-                        <div class="thumb">
-                            <img src="/assets/delicious/6.png" alt="">
-                        </div>
-                        <div class="info">
-                            <h3>#01. Chicken Chilis</h3>
-                            <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
-                            <span>$20</span>
-                        </div>
-                    </div>
-                </div>
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/4.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#08. Vegetable fry</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
             </div>
-                    </div>
-                  </div>
-            
-        </div>
-    </div>
-   
 
-    
-    <!-- gallery end -->
-    <div class="Reservation_area">
-        <div class="rev_icon_1 d-none d-md-block">
-            <img src="/assets/icon/4.png" alt="">
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/6.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#01. Chicken Chilis</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="rev_icon_2 d-none d-md-block">
-            <img src="/assets/icon/5.png" alt="">
+      </div>
+      <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+        <div class="row">
+          <div class="col-xl-6 col-md-6 col-lg-6">
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/1.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#12. Chicken Chilis</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/3.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#10. Fried Rice</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/5.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#02. Burger Cury</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-lg-6">
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/2.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#16. Chicken Chilis</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/4.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#08. Vegetable fry</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/6.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#01. Chicken Chilis</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="rev_icon_3 d-none d-md-block">
             <img src="/assets/icon/6.png" alt="">
@@ -473,17 +463,60 @@
                     
                 </div>
             </div>
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/5.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#02. Burger Cury</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-md-6 col-lg-6">
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/2.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#16. Chicken Chilis</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/4.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#08. Vegetable fry</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+            <div class="single_delicious d-flex align-items-center">
+              <div class="thumb">
+                <img src="/assets/delicious/6.png" alt="">
+              </div>
+              <div class="info">
+                <h3>#01. Chicken Chilis</h3>
+                <p>Craft beer elit seitan exercitation photo booth et 8-bit kale chips.</p>
+                <span>$20</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
 
+  </div>
+</div>
 
+<!-- gallery end -->
 
-
-
-
-
-    <!-- footer_start  -->
-    <%# <footer class="footer">
+<!-- footer_start  -->
+<%# <footer class="footer">
         <div class="footer_top">
             <div class="container">
                 <div class="row">
@@ -503,7 +536,7 @@
 
 
                             </p>
-                           
+
 
                         </div>
                     </div>
@@ -550,53 +583,52 @@
             </div>
         </div>
     </footer> %>
-    <!-- footer_end  -->
+<!-- footer_end  -->
 
-    <!-- JS here -->
-    <script src="/assets/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="/assets/vendor/jquery-1.12.4.min.js"></script>
-    <script src="/assets/popper.min.js"></script>
-    <script src="/assets/bootstrap.min.js"></script>
-    <script src="/assets/owl.carousel.min.js"></script>
-    <script src="/assets/isotope.pkgd.min.js"></script>
-    <script src="/assets/ajax-form.js"></script>
-    <script src="/assets/waypoints.min.js"></script>
-    <script src="/assets/jquery.counterup.min.js"></script>
-    <script src="/assets/imagesloaded.pkgd.min.js"></script>
-    <script src="/assets/scrollIt.js"></script>
-    <script src="/assets/jquery.scrollUp.min.js"></script>
-    <script src="/assets/wow.min.js"></script>
-    <script src="/assets/gijgo.min.js"></script>
-    <script src="/assets/nice-select.min.js"></script>
-    <script src="/assets/jquery.slicknav.min.js"></script>
-    <script src="/assets/jquery.magnific-popup.min.js"></script>
-    <script src="/assets/plugins.js"></script>
-
-
-
-    <!--contact js-->
-    <script src="/assets/contact.js"></script>
-    <script src="/assets/jquery.ajaxchimp.min.js"></script>
-    <script src="/assets/jquery.form.js"></script>
-    <script src="/assets/jquery.validate.min.js"></script>
-    <script src="/assets/mail-script.js"></script>
+<!-- JS here -->
+<script src="/assets/vendor/modernizr-3.5.0.min.js"></script>
+<script src="/assets/vendor/jquery-1.12.4.min.js"></script>
+<script src="/assets/popper.min.js"></script>
+<script src="/assets/bootstrap.min.js"></script>
+<script src="/assets/owl.carousel.min.js"></script>
+<script src="/assets/isotope.pkgd.min.js"></script>
+<script src="/assets/ajax-form.js"></script>
+<script src="/assets/waypoints.min.js"></script>
+<script src="/assets/jquery.counterup.min.js"></script>
+<script src="/assets/imagesloaded.pkgd.min.js"></script>
+<script src="/assets/scrollIt.js"></script>
+<script src="/assets/jquery.scrollUp.min.js"></script>
+<script src="/assets/wow.min.js"></script>
+<script src="/assets/gijgo.min.js"></script>
+<script src="/assets/nice-select.min.js"></script>
+<script src="/assets/jquery.slicknav.min.js"></script>
+<script src="/assets/jquery.magnific-popup.min.js"></script>
+<script src="/assets/plugins.js"></script>
 
 
-    <script src="/assets/main.js"></script>
+<!--contact js-->
+<script src="/assets/contact.js"></script>
+<script src="/assets/jquery.ajaxchimp.min.js"></script>
+<script src="/assets/jquery.form.js"></script>
+<script src="/assets/jquery.validate.min.js"></script>
+<script src="/assets/mail-script.js"></script>
 
-    <script>
-        $('#datepicker').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-calendar-o"></span>'
-            }
-        });
-        $('#datepicker2').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-calendar-o"></span>'
-            }
 
-        });
-    </script>
+<script src="/assets/main.js"></script>
+
+<script>
+    $('#datepicker').datepicker({
+        iconsLibrary: 'fontawesome',
+        icons: {
+            rightIcon: '<span class="fa fa-calendar-o"></span>'
+        }
+    });
+    $('#datepicker2').datepicker({
+        iconsLibrary: 'fontawesome',
+        icons: {
+            rightIcon: '<span class="fa fa-calendar-o"></span>'
+        }
+
+    });
+</script>
 </body>

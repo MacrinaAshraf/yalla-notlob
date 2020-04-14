@@ -1,33 +1,45 @@
+<% content_for :title do %>
+  Orders
+<% end %>
+<br>
+<br>
 <p id="notice"><%= notice %></p>
 
-<center><h1>Orders</h1></center>
+<!--<center><h1>Orders</h1></center>-->
 
-<center><table  border="1" cellspacing="0" cellpadding="10" id="c"></center>
+<%= link_to 'New Order', new_order_path , class: 'genric-btn primary-border circle arrow ml-5'%>
+<br>
+<br>
+<table  class="table">
   <thead>
     <tr>
-      <th >Order</th>
-      <th >Restaurant</th>
-      <th >Invited</th>
-      <th >Joined</th>
-      <th >Status</th>
-      <th >Actions</th>
+      <th scope="col" >Order</th>
+      <th scope="col" >Restaurant</th>
+      <th scope="col" >Invited</th>
+      <th scope="col" >Joined</th>
+      <th scope="col" >Status</th>
+      <th scope="col" >Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.meal%></td>
-        <td><%= order.restaurant %></td>
-        <td>1</td>
-        <td>1</td>
-        <td><%= order.status %></td>
-        <td><%= link_to 'finish',status_path(order),class: 'btn btn-success' %><a href="<%=  %>" class="btn btn-primary">view</a><%= link_to 'cancel',order, method: :delete,class: 'btn btn-danger' %></td>
+        <td ><%= order.order_time%></td>
+        <td ><%= order.restaurant %></td>
+        <td >1</td>
+        <td >1</td>
+        <td ><%= order.status %></td>
+        <td >
+          <div class="btn-toolbar">
+            <%= link_to 'finish',status_path(order),class: 'btn btn-outline-success btn-group mr-2' %>
+            <a href="<%=  %>" class="btn btn-outline-primary btn-group mr-2">view</a>
+            <%= link_to 'cancel',order, method: :delete,class: 'btn btn-outline-danger btn-group' %>
+          </div>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Order', new_order_path %>
