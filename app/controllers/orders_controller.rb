@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  # before_action :authenticate_user!
-  # before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -111,7 +111,36 @@ class OrdersController < ApplicationController
  end
 
 
-
 def freind_params
  params.require(:friend).permit(:friend_id)
+end
+
+
+def checkInvitedExistance
+  @userGroups = User.find(current_user.id).groups
+  
+  @users = User.where(email: params[:keyword]);
+    if @users.length != 0
+      status = "true"
+      respond_with(@users, :include => :status)
+    else
+      @users = Group.where(name: params[:keyword])
+        if @users.length != 0
+          flag = 0
+          @users.each do |group|
+            if @userGroups.ids.include? group.id or group.user_id === current_user.id
+              flag = 1
+              result = true
+              respond_with(@users, :include => :status)
+            end
+          end
+          if flag == 0
+            @users = nil
+            respond_with(@users, :include => :status) 
+          end
+        else
+          @users = nil
+          respond_with(@users, :include => :status)
+        end
+    end
 end
