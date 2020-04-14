@@ -1,0 +1,73 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Restaurant</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/assets/loginutil.css">
+	<link rel="stylesheet" type="text/css" href="/assets/loginmain.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+        <div class="login100-form validate-form p-l-55 p-r-55 p-t-178">
+
+
+            <%= form_for(:user, url: '/updatepassword', action: 'create') do |f| %>  
+
+              <span class="login100-form-title">
+              Edit Password
+              <br/>
+              <% if notice %>
+                  <%# <p style="color:green"><%= notice %>
+                <% end %>
+                <% if alert %>
+                  <p style="color:red"><%= alert %></p>
+                <% end %>
+            </span>
+
+
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email">
+              <%= f.email_field :email,class: "input100", autocomplete: "email",placeholder: 'email' %>
+              <span class="focus-input100"></span>
+            </div>
+
+    
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter new password">
+              <%= f.password_field :new_password,class: "input100", autocomplete: "new-password",placeholder: 'confirm password',minlength:6 %>
+              <span class="focus-input100"></span>
+            </div>
+              
+            
+     
+            <div class="container-login100-form-btn">
+                  <%= f.submit "Edit",class:"login100-form-btn" %>
+            </div>
+
+            <div class="flex-col-c p-t-170 p-b-40">
+              
+              
+            </div>
+            <%end %>	
+          </div>
+        </div>
+		</div>
+	</div>
+	
+
+</body>
+</html>
+
+
+  
+ 
+
+
+<%# <%= render "devise/shared/links" %>
