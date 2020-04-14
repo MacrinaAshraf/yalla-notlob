@@ -9,8 +9,6 @@ class PagesController < ApplicationController
       @ordersN= Order.where(user_id: current_user.id )
       @ordersN.each do |order|
         if order.status == "waiting" 
-            newStr= "3"
-            newStr+= "6"
             @orders.push(order.meal +" on "+ order.created_at.strftime("%d-%m-%Y"))
           # @orders.push(""+order.meal+" on "+ order.created_at.strftime("%d-%m-%Y"))
         end 
