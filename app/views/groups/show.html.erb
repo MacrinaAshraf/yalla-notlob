@@ -1,15 +1,146 @@
-<div class="userInfo">
-  <h3><%= @group.name %></h3>
-  <div class="form">
-  <%= form_tag group_path, method: "get" do %>
-    <%= label_tag :name , "your friend email" %>
-    <%= search_field_tag :search , params[:search] %>
-    <%= submit_tag "Add" , :class=>"btn btn-primary" %>
-  <% end %>
-  <div>
-</div>
-<% @users.each do |user| %>  
-    <div>
-      <%= user.email %>
-    </div>
-<% end %>
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add Users</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
+
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/magnific-popup.css">
+    <link rel="stylesheet" href="assets/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/themify-icons.css">
+    <link rel="stylesheet" href="assets/gijgo.css">
+    <link rel="stylesheet" href="assets/nice-select.css">
+    <link rel="stylesheet" href="assets/flaticon.css">
+    <link rel="stylesheet" href="assets/slicknav.css">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-area ">
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid p-0">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-xl-3 col-lg-2">
+                                <div class="logo">
+                                    <a href="">
+                                        <img src="assets/logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-7">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                        <li><a class="active" href="index.html">Home</a></li>
+                                        <li><%= link_to('Friend', friends_path, :method => :get ) %></li>
+                                        <li><%= link_to('Groups',groups_path, :method => :get) %></li>
+                                        <li><%= link_to('Orders', orders_path, :method => :delete ) %></li>
+                                        <li><%= link_to('Logout', destroy_user_session_path, :method => :delete ) %></li>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="say_hello">
+                                    <a href=""><%= @currentUser %><</a>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="about_area">
+        <div class="icon_1 d-none d-md-block">
+            <img src="assets/icon/1.png" alt="">
+        </div>
+        <div class="icon_2 d-none d-md-block">
+            <img src="assets/icon/2.png" alt="">
+        </div>
+        <div class="icon_3 d-none d-md-block">
+            <img src="assets/icon/3.png" alt="">
+        </div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="userInfo">
+                <h3><%= @group.name %></h3>
+                <div class="form">
+                <%= form_tag group_path, method: "get" do %>
+                <%= label :name , "your friend email" %>
+                <%= search_field :search , params[:search] %>
+                <%= submit_tag "Add" , :class=>"btn btn-primary" %>
+                <% end %>
+                </div>
+            </div>
+            <% @users.each do |user| %>  
+                <div class="card md-6 mb-4">
+                <div class="card-body">
+                    <%= user.email %>
+                </div>
+                </div>
+            <% end %>
+            </div>
+        </div>
+  
+    <script src="assets/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="assets/vendor/jquery-1.12.4.min.js"></script>
+    <script src="assets/popper.min.js"></script>
+    <script src="assets/bootstrap.min.js"></script>
+    <script src="assets/owl.carousel.min.js"></script>
+    <script src="assets/isotope.pkgd.min.js"></script>
+    <script src="assets/ajax-form.js"></script>
+    <script src="assets/waypoints.min.js"></script>
+    <script src="assets/jquery.counterup.min.js"></script>
+    <script src="assets/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/scrollIt.js"></script>
+    <script src="assets/jquery.scrollUp.min.js"></script>
+    <script src="assets/wow.min.js"></script>
+    <script src="assets/gijgo.min.js"></script>
+    <script src="assets/nice-select.min.js"></script>
+    <script src="assets/jquery.slicknav.min.js"></script>
+    <script src="assets/jquery.magnific-popup.min.js"></script>
+    <script src="assets/plugins.js"></script>
+
+
+
+    <script src="assets/contact.js"></script>
+    <script src="assets/jquery.ajaxchimp.min.js"></script>
+    <script src="assets/jquery.form.js"></script>
+    <script src="assets/jquery.validate.min.js"></script>
+    <script src="assets/mail-script.js"></script>
+
+
+    <script src="assets/main.js"></script>
+
+    <script>
+        $('#datepicker').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-calendar-o"></span>'
+            }
+        });
+        $('#datepicker2').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-calendar-o"></span>'
+            }
+
+        });
+    </script>
+</body>
+
+</html>
