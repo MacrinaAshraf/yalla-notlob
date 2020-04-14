@@ -5,6 +5,14 @@ class PagesController < ApplicationController
   def index
     if user_signed_in?
       @currentUser = current_user.name
+      @orders=[]
+      @ordersN= Order.where(user_id: current_user.id )
+      @ordersN.each do |order|
+        @orders.push(order.restaurant)
+      end
+
+
+      
 
       # redirect_to root_path
     else

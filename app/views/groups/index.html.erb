@@ -94,21 +94,28 @@
     <div class="rev_icon_3 d-none d-md-block">
         <img src="assets/icon/6.png" alt="">
     </div>
-  
-    <div class="parent">
-    <h1>Add Group</h1>
-    <div class="formContent">
-    <%= form_for(@group, action_name:@group) do |f| %>
-      <div class="form-group">
-        <%= f.label :Groups %>
-        <%= f.text_field :name ,nil, placeholder: "Enter name of group" %>
-        <%= submit_tag "Add", class:"btn btn-primary" %>
-      </div>
+    <% if flash[:group_error].present? %>
+            <div class ="alert alert-danger>
+                <% flash[:group_error] %>
+            </div>
     <% end %>
+    <% if flash[:notice].present? %>
+    <div class ="alert alert-danger">
+        <% flash[:notice] %>
+    </div>
+    <% end %>
+    <%= form_with(url: "/groups", method: "post") do %>
+        <div class="form-group">
+          <%= label_tag :Groups %>
+          <%= text_field_tag :name ,nil, placeholder: "Enter name of group..." %>
+          <%= submit_tag "Add", class:"btn btn-primary" %>
+        </div>
+      <% end %>
+   
     <div class="groupInfo">
       <div class="showGroups">
        <h2>My Groups</h2>
-        <% @groups.each do |group| %>
+        <% @group.each do |group| %>
           <div class="content"> 
           <%= link_to group.name , group , action: "show" %>
           <div class="links">

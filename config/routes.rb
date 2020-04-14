@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :friends
   resources :groups
   resources :orders
+  resources :group_users, only: [:create, :destroy]
   # end
   get 'status/:id' => 'orders#change_status', :as => 'status'
   # resources  :users do
