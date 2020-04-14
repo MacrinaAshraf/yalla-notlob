@@ -3,7 +3,7 @@
 <% end %>
 <br>
 <br>
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%#= notice %></p>-->
 
 <!--<center><h1>Orders</h1></center>-->
 
@@ -25,7 +25,7 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td ><%= order.order_time%></td>
+        <td ><%= order.meal%></td>
         <td ><%= order.restaurant %></td>
         <td >1</td>
         <td >1</td>

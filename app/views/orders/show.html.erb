@@ -3,9 +3,6 @@
 <% end %>
 <br>
 <br>
-<!--<p id="notice"><%#= notice %></p>-->
-
-<!--<center><h1>Orders</h1></center>-->
 
 <%= link_to 'Back', orders_path , class: 'btn-group genric-btn info-border circle arrow ml-3'%>
 
@@ -47,9 +44,12 @@
 <br>
 <h3>Add a new item</h3>
 
+
+<%#= render partial: 'errors' %>
+
 <%= form_for([@order, @order.order_details.build], method: :post) do |f| %>
   <div class="form-group ml-10">
-    <input type="hidden" name="user_id" value="<%= current_user.id %>"/>
+<!--    <input type="hidden" name="user_id" value="<%#= current_user.id %>"/>-->
     <%= f.text_field(:item, placeholder: "What do you want?", class:"form-control col-md-6") %>
     <%= f.number_field(:amount, placeholder: "How many?", class:"form-control col-md-6") %>
     <%= f.number_field(:price, placeholder: "Fow much?", class:"form-control col-md-6") %>
