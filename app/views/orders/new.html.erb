@@ -9,35 +9,39 @@
 <div class="container">
   <div class="row">
     <div class="col-md-7">
-        <%= form_for(@order, url: @order) do |f| %>
+      <%= form_for(@order, url: @order) do |f| %>
         <div class="form-group">
-        <%= f.select(:order_time, ['Lunch', 'Breakfast'], {}, :class => 'form-control col-md-6')%>
+<%= f.select :meal, [
+    ['Lunch','Lunch'],
+    ['Breakfast','Breakfast']
+  ], {}, prompt: 'Select One' %>
+
         </div>
 
         <div class="form-group">
-          <%= f.text_field(:restaurant, class: 'form-control col-md-6', placeholder: 'Restaurant')%><br>
+          <%= f.text_field(:restaurant, class: 'form-control col-md-6', placeholder: 'Restaurant') %><br>
         </div>
 
         <div class="form-group">
          <%# Freinds Invite Foes Here  %>
           <div class="form-group invitedDiv ">
                   <input type="text" name="invited" class="form-control col-md-6 btn-block invitedBtn" id="invited" 
-                     placeholder="email | Group Name" required>
+                     placeholder="email,, group" required>
                   <%# <button  onclick="()=> console.log('asas')" >Inv</button> %>
                   <a id="inviteButton" href="javascript:void(0)" >click</a>
                   <%# <%= link_to 'new', action_name => new_order_path ,class: "btn btn-info col-md-6" , remote: true %> %>
             </div>
         </div>
 
-           
+
         <div class="form-group">
-          
-            <%= f.file_field :menu_path, class: 'form-control col-md-6 ' %>
-          
+
+          <%= f.file_field :menu_path, class: 'form-control col-md-6 ' %>
+
         </div>
 
-          <%= submit_tag 'Publish', class: "btn btn-info col-md-6"  %>
-        <% end %>
+        <%= submit_tag 'Publish', class: "btn btn-info col-md-6" %>
+      <% end %>
 
     </div>
 
@@ -61,7 +65,7 @@
     </div>
   </div>
 
- 
+
 </div>
 
 

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get '/updatepassword' => 'paswords#new'
   post '/updatepassword' => 'paswords#create'
 
-
   # resources :paswords
 
   # get '/users/sign_out' => 'devise/sessions#destroy'
@@ -15,7 +14,10 @@ Rails.application.routes.draw do
   # match "*path", to: "pages#errorPage", via: :all
   resources :friends
   resources :groups
-  resources :orders
+  resources :orders do
+    # resource :order_details
+    resources :order_details, only: [:create, :destroy]
+  end
   # end
   get 'status/:id' => 'orders#change_status', :as => 'status'
   # resources  :users do
