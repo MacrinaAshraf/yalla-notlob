@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @order = Order.find(params[:id])#, @order.order_details
+    @order = Order.find(params[:id])
   end
 
   def change_status
@@ -38,6 +38,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.status = "waiting"
     @order.order_time = DateTime.now
+    p params
     #Current User Id
     @order.user_id = current_user.id
     @order.menu_path = params[:order][:menu_path].original_filename
