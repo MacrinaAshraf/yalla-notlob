@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   # match "*path", to: "pages#errorPage", via: :all
   resources :friends
   resources :groups
+  resources :orders
+  resources :groups do
+    resource :group_users, only: [:create, :destroy]
   resources :orders do
     # resource :order_details
     resources :order_details, only: [:create, :destroy]
