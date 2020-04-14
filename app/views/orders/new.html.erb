@@ -26,7 +26,7 @@
          <%# Freinds Invite Foes Here  %>
           <div class="form-group invitedDiv ">
                   <input type="text" name="invited" class="form-control col-md-6 btn-block invitedBtn" id="invited" 
-                     placeholder="email,, group" required>
+                     placeholder="email Group Name" required>
                   <%# <button  onclick="()=> console.log('asas')" >Inv</button> %>
                   <a id="inviteButton" href="javascript:void(0)" >click</a>
                   <%# <%= link_to 'new', action_name => new_order_path ,class: "btn btn-info col-md-6" , remote: true %> %>
@@ -41,6 +41,10 @@
         </div>
 
         <%= submit_tag 'Publish', class: "btn btn-info col-md-6" %>
+
+        <div id="users">
+
+        </div>
       <% end %>
 
     </div>
@@ -92,6 +96,13 @@
           if (result.length == 0) {
               invited.value = "do not Exist";
           } else {
+            console.log(result);
+            result.map((user) => {
+              $("#users").append(`
+                <input name=users[] value="${user.id}" hidden/>
+              `)
+
+            })
               inviteFriends();
           }
         }
@@ -114,7 +125,7 @@
                 <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
                 <div class="card-body">
                 <%# Friend Name only appended %>
-                  <h5 class="card-title" style="margin-left:20px;">{invitedValue}</h5> 
+                  <h5 class="card-title" style="margin-left:20px;">${invitedValue}</h5> 
                   <a href="#" style="margin-left:50px;"><span aria-hidden="true">&times;</span></a>
                 </div>
               </div>`
