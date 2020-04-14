@@ -9,10 +9,9 @@ class PagesController < ApplicationController
       @ordersN= Order.where(user_id: current_user.id )
       @ordersN.each do |order|
         if order.status == "waiting"
-          @orders.push("#{order.meal.to_s} on #{order.created_at.to_s}")
+            @orders.push("#{order.meal.to_s} on #{order.created_at.to_s}")
         end
       end
-      # redirect_to root_path
     else
       redirect_to new_user_session_path
     end
