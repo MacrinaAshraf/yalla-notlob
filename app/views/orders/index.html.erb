@@ -32,9 +32,9 @@
         <td ><%= order.status %></td>
         <td >
           <div class="btn-toolbar">
-            <%= link_to 'finish',status_path(order),class: 'btn btn-outline-success btn-group mr-2' %>
-            <a href="<%=  %>" class="btn btn-outline-primary btn-group mr-2">view</a>
-            <%= link_to 'cancel',order, method: :delete,class: 'btn btn-outline-danger btn-group' %>
+            <%= link_to :Finish,status_path(order),class: 'btn btn-outline-success btn-group mr-2' %>
+            <%= link_to :Show, order, action: "show", class: "btn btn-outline-primary mr-2" %>
+            <%= link_to :Cancel, order, method: :delete, class: 'btn btn-outline-danger btn-group' %>
           </div>
         </td>
       </tr>
