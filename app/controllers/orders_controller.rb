@@ -12,14 +12,15 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
   end
+
   def change_status
     @order = Order.find(params[:id])
     puts(@order)
-    @order.status = "ready"
+    @order.status = 'ready'
     @order.save
     redirect_to orders_path
-  end  
-    
+  end
+
   # def show
   # end
 
@@ -28,8 +29,6 @@ class OrdersController < ApplicationController
     @order = Order.new
     @friends = Friend.new
   end
-
-  
 
   # GET /orders/1/edit
   # def edit
@@ -61,7 +60,6 @@ class OrdersController < ApplicationController
     #   end
     # end
   end
-
 
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
@@ -96,6 +94,7 @@ class OrdersController < ApplicationController
   # end
 
   # private
+
   #   Use callbacks to share common setup or constraints between actions.
   #   def set_order
   #     @order = Order.find(params[:id])
@@ -106,13 +105,13 @@ class OrdersController < ApplicationController
     #   params.fetch(:order, {})
     # end
 
-    def order_params
-      params.require(:order).permit(:order_time, :restaurant, :menu_path)
-    end
+  def order_params
+    params.require(:order).permit(:order_time, :restaurant, :menu_path)
+  end
  end
 
 
 
- def freind_params
-  params.require(:friend).permit(:friend_id)
+def freind_params
+ params.require(:friend).permit(:friend_id)
 end
