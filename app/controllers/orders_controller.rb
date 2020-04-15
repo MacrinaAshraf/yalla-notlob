@@ -2,6 +2,56 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
   # before_action :set_order, only: [:show, :edit, :update, :destroy]
 
+
+  def checkInvitedExistance
+    @userGroups = User.find(current_user.id).groups
+
+    @users = User.where(name: params[:keyword]);
+    p @users
+    if @users.length != 0
+      p "in users......."
+      status = "true"
+      respond_to do |format|
+
+        format.html # show.html.erb
+        format.json { render json: @users }
+      end
+    else
+      @users = Group.where(name: params[:keyword])
+      if @users.length != 0
+        flag = 0
+        @users.each do |group|
+          if @userGroups.ids.include? group.id or group.user_id === current_user.id
+            flag = 1
+            result = true
+            respond_to do |format|
+
+              format.html # show.html.erb
+              format.json { render json: @users }
+            end
+          end
+        end
+        if flag == 0
+          @users = []
+          # respond_with(@users, :include => :status)
+          respond_to do |format|
+
+            format.html # show.html.erb
+            format.json { render json: @users }
+          end
+        end
+      else
+        @users = []
+        # respond_with(@users, :include => :status)
+        respond_to do |format|
+
+          format.html # show.html.erb
+          format.json { render json: @users, :include => :status }
+        end
+      end
+    end
+  end
+
   # GET /orders
   # GET /orders.json
   def index
