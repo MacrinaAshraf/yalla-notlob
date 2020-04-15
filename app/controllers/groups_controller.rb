@@ -13,9 +13,10 @@ class GroupsController < ApplicationController
     @new_group.name = params[:name]
     @new_group.save
     if @new_group.persisted?
-      flash[:notice] = ["Group successfully created"]
+      flash[:notice] = "Group successfully created"
+      redirect_to :groups
     elsif @new_group.nil?
-      flash[:create_error] = ["you must enter group name"]
+      flash[:create_error] = "you must enter group name"
       redirect_to :groups
     end
   end
@@ -27,6 +28,7 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
+    flash[:delete_notice] = "Group successfully destroyed"
     redirect_to :groups
   
   end
