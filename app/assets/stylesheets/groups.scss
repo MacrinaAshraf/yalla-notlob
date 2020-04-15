@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 @import "bootstrap";
 @import "font-awesome";
+.container{
+    margin-top: 50%;
+}
 .groupInfo{
     display: flex;
     margin-top: 3%;
