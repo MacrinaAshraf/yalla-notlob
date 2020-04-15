@@ -91,8 +91,10 @@ class OrdersController < ApplicationController
     p params
     @order = Order.new(order_params)
     @order.status = "waiting"
+    @order.order_time = DateTime.now
+    p params
     #Current User Id
-    @order.user_id = 1
+    @order.user_id = current_user.id
     @order.menu_path = params[:order][:menu_path].original_filename
     uploaded_io = params[:order][:menu_path]
     File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
@@ -158,7 +160,7 @@ class OrdersController < ApplicationController
     # end
 
   def order_params
-    params.require(:order).permit(:order_time, :restaurant, :menu_path)
+    params.require(:order).permit(:meal, :restaurant, :menu_path)
   end
  end
 
