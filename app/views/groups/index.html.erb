@@ -1,120 +1,40 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Groups</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-
-    <link rel="stylesheet" href="assets/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/magnific-popup.css">
-    <link rel="stylesheet" href="assets/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/themify-icons.css">
-    <link rel="stylesheet" href="assets/gijgo.css">
-    <link rel="stylesheet" href="assets/nice-select.css">
-    <link rel="stylesheet" href="assets/flaticon.css">
-    <link rel="stylesheet" href="assets/slicknav.css">
-    <link rel="stylesheet/groups" href="assets/groups.scss">
-    <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/groups.css">
-
-</head>
-
-<body>
-    <header>
-        <div class="header-area ">
-            <div id="sticky-header" class="main-header-area">
-                <div class="container-fluid p-0">
-                    <div class="header_bottom_border">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col-xl-3 col-lg-2">
-                                <div class="logo">
-                                    <a href="index.html">
-                                        <img src="assets/logo.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-7">
-                                <div class="main-menu  d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a class="active" href="index.html">Home</a></li>
-                                            <li><%= link_to('Friend', friends_path, :method => :get ) %></li>
-                                            <li><%= link_to('Groups',groups_path, :method => :get) %></li>
-                                            <li><%= link_to('Orders', orders_path, :method => :delete ) %></li>
-                                            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete ) %></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                                <div class="say_hello">
-                                    <a href="#"><%= @currentUser %></a>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="bradcam_area bradcam_bg_1">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text text-center">
-                        <h3>Groups</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-    <div class="Reservation_area">
-    <div class="rev_icon_1 d-none d-md-block">
-        <img src="assets/icon/4.png" alt="">
-    </div>
-    <div class="rev_icon_3 d-none d-md-block">
-    <img src="assets/icon/6.png" alt="">
-</div>
-    <div class="rev_icon_2 d-none d-md-block">
-        <img src="assets/icon/5.png" alt="">
-    </div>
-
-    <div class="rev_icon_3 d-none d-md-block">
-        <img src="assets/icon/6.png" alt="">
-    </div>
+<% content_for :title do %>
+  Groups
+<% end %>
     <% if flash[:group_error].present? %>
             <div class ="alert alert-danger>
                 <% flash[:group_error] %>
             </div>
     <% end %>
-    <div class="parent">
+    <div class="container-group">
     <h1>Add Group</h1>
     <div class="formContent">
     <%= form_with(url: "/groups", method: "post") do %>
         <div class="form-group">
-          <%= label_tag :Groups %>
-          <%= text_field_tag :name ,nil, placeholder: "Enter name of group..." %>
+          <%= text_field_tag :name ,nil, placeholder: "Enter name of group...",class:"form-control" %><br>
           <%= submit_tag "Add", class:"btn btn-primary" %>
         </div>
       <% end %>
-   
+      <% if  flash[:notice].present? %>
+      <div class="alert alert-success">
+      <%= flash[:notice] %>
+      </div>
+      <% end %>
+      <% if  flash[:create_error].present? %>
+      <div class="alert alert-danger">
+      <%= flash[:create_error] %>
+      </div>
+      <% end %>
+      <% if  flash[:delete_notice].present? %>
+      <div class="alert alert-success">
+      <%= flash[:delete_notice] %>
+      </div>
+      <% end %>
     <div class="groupInfo">
       <div class="showGroups">
        <h2>My Groups</h2>
         <% @group.each do |group| %>
-          <div class="content"> 
+          <div class="content-group"> 
           <%= link_to group.name , group , action: "show" %>
           <div class="links">
             <%= link_to "", group , action: "show" , class:"fa fa-user-plus" %>
@@ -128,36 +48,4 @@
     </div>
     
 
-        <!-- scripts for js -->
-    <script src="assets/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="assets/vendor/jquery-1.12.4.min.js"></script>
-    <script src="assets/popper.min.js"></script>
-    <script src="assets/bootstrap.min.js"></script>
-    <script src="assets/owl.carousel.min.js"></script>
-    <script src="assets/isotope.pkgd.min.js"></script>
-    <script src="assets/ajax-form.js"></script>
-    <script src="assets/waypoints.min.js"></script>
-    <script src="assets/jquery.counterup.min.js"></script>
-    <script src="assets/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/scrollIt.js"></script>
-    <script src="assets/jquery.scrollUp.min.js"></script>
-    <script src="assets/wow.min.js"></script>
-    <script src="assets/gijgo.min.js"></script>
-    <script src="assets/nice-select.min.js"></script>
-    <script src="assets/jquery.slicknav.min.js"></script>
-    <script src="assets/jquery.magnific-popup.min.js"></script>
-    <script src="assets/plugins.js"></script>
-
-
-
-    <script src="assets/contact.js"></script>
-    <script src="assets/jquery.ajaxchimp.min.js"></script>
-    <script src="assets/jquery.form.js"></script>
-    <script src="assets/jquery.validate.min.js"></script>
-    <script src="assets/mail-script.js"></script>
-
-
-    <script src="assets/main.js"></script>
-</body>
-
-</html>
+       
