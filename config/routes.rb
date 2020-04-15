@@ -17,10 +17,9 @@ Rails.application.routes.draw do
 
 
   resources :friends
-  resources :groups
   resources :orders
   resources :groups do
-    resource :group_users, only: [:create, :destroy]
+    resources :group_users, only: [:create, :destroy]
   end
   resources :orders do
     # resource :order_details
@@ -33,5 +32,5 @@ Rails.application.routes.draw do
   # resources  :users do
   #   resources :posts, only: [:index]
   #  end
-  end
 end
+
