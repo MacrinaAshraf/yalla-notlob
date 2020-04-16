@@ -12,6 +12,33 @@
  *
  */
  @import "bootstrap";
+ @import "font-awesome";
+ .container-group{
+     margin-left: 30%;
+     margin-right: 50%;
+ }
+ .groupInfo{
+    display: flex;
+    margin-top: 3%;
+}
+.content-group{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.container-user{
+    margin-left: 30%;
+    margin-top: 3%;
+}
+
+.links{
+    margin-left: 30%;
+    padding-bottom: 3%;
+}
+h1{
+    margin-left: 50%;
+    margin-top: -86px;
+}
 
  /*
  *= require jquery-ui
