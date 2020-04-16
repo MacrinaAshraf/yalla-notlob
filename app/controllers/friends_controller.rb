@@ -23,6 +23,7 @@ class FriendsController < ApplicationController
       @friend = Friend.find_by(user_id: current_user.id, friend_id: user.id)
       if !@friend.present?
         @new_friend = Friend.create(user_id: current_user.id, friend_id: user.id)
+        Friend.create_notifications()
         respond_to do |format|
           if @new_friend.save
             format.html { redirect_to friends_url, notice: 'Friend was successfully created.'}
