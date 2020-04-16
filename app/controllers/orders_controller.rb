@@ -5,12 +5,13 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.paginate(:page => params[:page], :per_page => 2)
   end
 
   # GET /orders/1
   # GET /orders/1.json
   def show
+    @order = Order.find(params[:id])
   end
 
   def change_status
@@ -20,9 +21,6 @@ class OrdersController < ApplicationController
     @order.save
     redirect_to orders_path
   end
-
-  # def show
-  # end
 
   # GET /orders/new
   def new
@@ -39,14 +37,16 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.status = "waiting"
+    @order.order_time = DateTime.now
+    p params
     #Current User Id
-    @order.user_id = 1
+    @order.user_id = current_user.id
     @order.menu_path = params[:order][:menu_path].original_filename
     uploaded_io = params[:order][:menu_path]
     File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
       file.write(uploaded_io.read)
     end
-    @order.save()
+    @order.save
     redirect_to action: :index
 
     # respond_to do |format|
@@ -64,15 +64,15 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    respond_to do |format|
-      if @order.update(order_params)
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { render :show, status: :ok, location: @order }
-      else
-        format.html { render :edit }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @order.update(order_params)
+    #     format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @order }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /orders/1
@@ -106,7 +106,7 @@ class OrdersController < ApplicationController
     # end
 
   def order_params
-    params.require(:order).permit(:order_time, :restaurant, :menu_path)
+    params.require(:order).permit(:meal, :restaurant, :menu_path)
   end
  end
 

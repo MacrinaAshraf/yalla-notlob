@@ -1,0 +1,10 @@
+<br>
+<% if @order_detail.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+      <% @order_detail.errors.full_messages.each do |error| %>
+        <li> <%= error %> </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

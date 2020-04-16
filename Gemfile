@@ -62,3 +62,4 @@ gem 'mailcatcher'
 gem "jquery-rails"
 gem "jquery-ui-rails"
 gem "notifications"
+gem 'will_paginate', '~> 3.0'
